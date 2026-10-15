@@ -146,11 +146,7 @@ Motorul generează un dataset de perechi `(generația t, generația t+1)`, iar o
 | Prioritate | Automate | De ce |
 | --- | --- | --- |
 | Obligatoriu | Game of Life, Brian's Brain, Forest Fire (determinist), Cyclic CA, Crystal Growth | toate sunt `neighbour_count`, deci un singur interpretor le acoperă |
-| Dacă avem timp | Rule 30 și automatele elementare (`lookup_1d`), Forest Fire cu probabilități, Langton's Ant (`agent`) | fiecare cere un tip de spec în plus; le adăugăm după ce baza funcționează |
-| Nu facem | Sandpile, Diffusion | celulele au valori numerice, nu tipuri, iar regulile sunt calcule (prăbușire, medie), nu „numără vecinii” |
-| Nu facem | Traffic cu viteze, Predator–Prey, Schelling, Falling Sand, ecosistemul artificial | agenți care se mută, au energie sau viteză; ar cere un motor separat |
-| Nu facem | Epidemic (I → R după N ture) | fiecare celulă ar trebui să țină minte de câte ture e infectată |
-| Nu facem | lumi 3D | în afara cerințelor |
+| Obligatoriu | Rule 30 și automatele elementare (`lookup_1d`), Forest Fire cu probabilități, Langton's Ant (`agent`) | fiecare cere un tip de spec în plus; le adăugăm după ce baza funcționează |
 
 Pentru toate automatele obligatorii acoperim toate cele 5 întrebări, plus interfața, lumea inițială și salvarea / încărcarea.
 
