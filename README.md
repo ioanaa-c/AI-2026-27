@@ -13,7 +13,7 @@ Aplicație care primește descrierea unui automat celular în limbaj natural, o 
 | Basarab Roxana-Ioana | GUI + stocare | Streamlit, vizualizare, salvare / încărcare experimente |
 | Rendiuc Ioana | Lumi inițiale + automate 1D + ML | generarea lumii inițiale, Rule 30, dataset, rețeaua neuronală |
 
-**De ce așa:** fiecare arie corespunde unei componente separate din arhitectură, deci putem lucra în paralel fără să ne blocăm una pe alta. Fiecare colegă are cod de scris încă de la Deliverable 2 (lumile inițiale și automatele 1D sunt necesare devreme), deci încărcarea e echilibrată, important pentru că notarea poate fi individuală.
+**De ce așa:** fiecare arie corespunde unei componente separate din arhitectură, deci putem lucra în paralel fără să ne blocăm una pe alta.
 
 ## Arhitectură
 
@@ -32,7 +32,7 @@ Componentele comunică doar prin **spec-ul JSON** (descrierea automatului), **lu
 
 ### Limbaj: Python 3.11+
 
-**De ce:** are cele mai bune biblioteci pentru tot ce ne trebuie (calcul numeric, interfață, rețele neuronale), iar toate membrele echipei îl cunoaștem. Nu avem nevoie de un al doilea limbaj.
+**De ce:** are cele mai bune biblioteci pentru tot ce ne trebuie (calcul numeric, interfață, rețele neuronale).
 
 ### Grila: matrice `numpy`
 
@@ -93,8 +93,6 @@ Câmpul `kind` spune ce tip de reguli are automatul. Fiecare tip are propriul fo
 | **Hibrid (ales)** | LLM-ul generează JSON-ul, iar `pydantic` îl validează; la eroare, utilizatorul primește un mesaj clar | puțin mai mult de implementat |
 
 **Ce LLM:** un model open-source mic, rulat **local** cu [Ollama](https://ollama.com). Modelul exact îl alegem la prototip (L8), comparând câteva modele mici pe exemplele noastre.
-
-**Dacă LLM-ul nu e disponibil** (laptop prea slab, model neinstalat): utilizatorul poate încărca un automat din biblioteca de spec-uri predefinite sau poate scrie spec-ul JSON direct. Restul aplicației funcționează normal.
 
 **De ce:** un parser doar pe reguli ar eșua la orice formulare la care nu ne-am gândit, iar un LLM singur poate inventa reguli. Validarea cu `pydantic` prinde greșelile și dă mesaje clare (stare necunoscută, regulă lipsă), cerute explicit în enunț. Un model local nu are nevoie de internet, cont sau cheie API, deci demonstrația de la prezentare nu depinde de rețeaua din sală.
 
@@ -192,7 +190,3 @@ cellab/
 ├── tests/
 └── ai_conversations/  # interacțiunile cu asistenții AI
 ```
-
-## Instalare și utilizare
-
-Se completează pe măsură ce apare codul (`pip install -r requirements.txt`, instalarea Ollama și a modelului ales, apoi `streamlit run src/app/main.py`).
