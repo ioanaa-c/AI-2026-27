@@ -1,0 +1,15 @@
+{
+  "name": "Brian's Brain",
+  "description": "Celulele aprinse se sting, cele care se sting devin inactive; o celulă inactivă se aprinde cu exact 2 vecini aprinși",
+  "kind": "neighbour_count",
+  "grid": { "rows": 50, "cols": 50, "boundary": "toroidal" },
+  "states": ["OFF", "FIRING", "DYING"],
+  "symbols": { "OFF": ".", "FIRING": "F", "DYING": "D" },
+  "neighborhood": "moore",
+  "rules": [
+    { "from": "FIRING", "to": "DYING" },
+    { "from": "DYING", "to": "OFF" },
+    { "from": "OFF", "to": "FIRING", "if": { "count": "FIRING", "in": [2] } }
+  ],
+  "otherwise": "unchanged"
+}
