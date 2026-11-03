@@ -1,0 +1,13 @@
+{
+  "name": "Crystal Growth",
+  "description": "O celulă goală devine cristal dacă are exact un vecin cristal",
+  "kind": "neighbour_count",
+  "grid": { "rows": 50, "cols": 50, "boundary": "fixed" },
+  "states": ["EMPTY", "CRYSTAL"],
+  "symbols": { "EMPTY": ".", "CRYSTAL": "C" },
+  "neighborhood": "moore",
+  "rules": [
+    { "from": "EMPTY", "to": "CRYSTAL", "if": { "count": "CRYSTAL", "in": [1] } }
+  ],
+  "otherwise": "unchanged"
+}

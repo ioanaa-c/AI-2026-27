@@ -1,0 +1,14 @@
+{
+  "name": "Forest Fire",
+  "description": "Variantă deterministă: focul arde o generație, iar un copac se aprinde dacă are cel puțin un vecin în flăcări",
+  "kind": "neighbour_count",
+  "grid": { "rows": 50, "cols": 50, "boundary": "fixed" },
+  "states": ["EMPTY", "TREE", "FIRE"],
+  "symbols": { "EMPTY": ".", "TREE": "T", "FIRE": "F" },
+  "neighborhood": "moore",
+  "rules": [
+    { "from": "FIRE", "to": "EMPTY" },
+    { "from": "TREE", "to": "FIRE", "if": { "count": "FIRE", "min": 1 } }
+  ],
+  "otherwise": "unchanged"
+}

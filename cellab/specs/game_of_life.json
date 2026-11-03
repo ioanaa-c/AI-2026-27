@@ -1,0 +1,14 @@
+{
+  "name": "Game of Life",
+  "description": "Conway's Game of Life",
+  "kind": "neighbour_count",
+  "grid": { "rows": 50, "cols": 50, "boundary": "toroidal" },
+  "states": ["DEAD", "ALIVE"],
+  "symbols": { "DEAD": ".", "ALIVE": "A" },
+  "neighborhood": "moore",
+  "rules": [
+    { "from": "DEAD", "to": "ALIVE", "if": { "count": "ALIVE", "in": [3] } },
+    { "from": "ALIVE", "to": "DEAD", "if": { "count": "ALIVE", "not_in": [2, 3] } }
+  ],
+  "otherwise": "unchanged"
+}

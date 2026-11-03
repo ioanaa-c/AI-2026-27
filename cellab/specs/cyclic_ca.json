@@ -1,0 +1,16 @@
+{
+  "name": "Cyclic CA",
+  "description": "Cu 4 stări: o celulă trece la starea următoare (mod 4) dacă are cel puțin 2 vecini în acea stare",
+  "kind": "neighbour_count",
+  "grid": { "rows": 50, "cols": 50, "boundary": "toroidal" },
+  "states": ["S0", "S1", "S2", "S3"],
+  "symbols": { "S0": "0", "S1": "1", "S2": "2", "S3": "3" },
+  "neighborhood": "moore",
+  "rules": [
+    { "from": "S0", "to": "S1", "if": { "count": "S1", "min": 2 } },
+    { "from": "S1", "to": "S2", "if": { "count": "S2", "min": 2 } },
+    { "from": "S2", "to": "S3", "if": { "count": "S3", "min": 2 } },
+    { "from": "S3", "to": "S0", "if": { "count": "S0", "min": 2 } }
+  ],
+  "otherwise": "unchanged"
+}
