@@ -94,7 +94,7 @@ def test_find_cycle_with_transient():
 
 def test_stochastic_questions_raise():
     g = np.zeros((5, 5), dtype=np.int8)
-    with pytest.raises(ValueError, match="probabilități"):
+    with pytest.raises(ValueError, match="probabilitati"):
         first_stable(g, RANDOM, 10)
-    with pytest.raises(ValueError, match="probabilități"):
+    with pytest.raises(ValueError, match="probabilitati"):
         find_cycle(g, RANDOM, 10)
