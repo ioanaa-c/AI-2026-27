@@ -11,10 +11,10 @@ import numpy as np
 from src.parser.schema import AutomatonSpec, parse_spec
 
 class ExperimentConfig(BaseModel):
-    generations: int
+    generations: int = Field(..., ge=0)
     seed: Optional[int] = None
     store_intermediate: bool = True
-    store_every: int = 1
+    store_every: int = Field(default=1, ge=1)
     init_method: str = Field(..., pattern="^(manual|random|predefined)$")
     init_params: Dict[str, Any] = Field(default_factory=dict)
 
@@ -115,12 +115,10 @@ def load_experiment(exp_id: str, base_dir: str = "experiments") -> ExperimentDat
         config = ExperimentConfig(**config_data)
         
     # Încărcare matrice
-    npz_data = np.load(exp_dir / "generations.npz")
-    indices = npz_data["indices"].tolist()
-    
-    loaded_generations = []
-    for idx in indices:
-        loaded_generations.append(npz_data[f"gen_{idx}"])
+    # `with` închide fișierul .npz (altfel, pe Windows, folderul nu poate fi șters)
+    with np.load(exp_dir / "generations.npz") as npz_data:
+        indices = npz_data["indices"].tolist()
+        loaded_generations = [npz_data[f"gen_{idx}"] for idx in indices]
         
     return ExperimentData(
         spec=spec,
